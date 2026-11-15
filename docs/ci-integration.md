@@ -2,6 +2,8 @@
 
 PipelineProbe is designed to run seamlessly in your continuous integration pipelines. By failing a build when regressions are detected, it acts as an automated quality gate for your data platform.
 
+The examples below install `pipelineprobe==0.3.1` from PyPI. Pin the version so CI stays reproducible; drop the pin to track the latest release, or install `"pipelineprobe[cloud]==0.3.1"` if the job audits BigQuery or Snowflake.
+
 ---
 
 ## GitHub Actions
@@ -10,7 +12,7 @@ A ready-to-use workflow is available at [`examples/github-actions/pipelineprobe.
 
 ```yaml
       - name: Install PipelineProbe
-        run: pip install https://github.com/willowvibe/pipelineprobe/releases/download/v0.3.0/pipelineprobe-0.3.0-py3-none-any.whl
+        run: pip install pipelineprobe==0.3.1
 
       - name: Run PipelineProbe Audit
         env:
@@ -76,7 +78,7 @@ pipelineprobe:audit:
     PIPELINEPROBE_AIRFLOW_PASSWORD: $AIRFLOW_PASSWORD
     PIPELINEPROBE_WAREHOUSE_DSN: $WAREHOUSE_DSN
   script:
-    - pip install https://github.com/willowvibe/pipelineprobe/releases/download/v0.3.0/pipelineprobe-0.3.0-py3-none-any.whl
+    - pip install pipelineprobe==0.3.1
     - pipelineprobe audit --config pipelineprobe.yml --format both --fail-on-critical 5
   artifacts:
     when: always

@@ -116,3 +116,17 @@ kind: change
   trusted publishing, and the cloud SDKs moved behind a `cloud` extra so the
   default install stays lean. PyPI claims land in the README only in a
   follow-up change made after the first upload succeeds.
+- **Pages shipped after the release (v0.3.1).** Once the token gained
+  `pages=write`, Pages was enabled with `build_type: workflow` and
+  `pages.yml` moved from manual dispatch to publishing on every push to main.
+  The site is live at `https://willowvibe.github.io/pipelineprobe/`, so the
+  earlier "no live URLs" deviation no longer applies to the README: it now
+  links the landing page and the hosted sample report. Canonical and Open
+  Graph tags are injected by `scripts/build_demo_report.py`, because
+  regenerating that page otherwise discards any hand edit.
+- **v0.3.1 patch release.** PyPI renders the README as the project
+  description and does not rewrite relative paths, so 0.3.0's page shipped
+  broken images and links. PR #20 made every path absolute; because published
+  metadata is immutable, a 0.3.1 patch republished it. The demo MP4 and poster
+  were copied onto the v0.3.1 release so the site, workflow and test pin one
+  tag.
