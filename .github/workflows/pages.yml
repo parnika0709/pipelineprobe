@@ -1,10 +1,11 @@
 name: Pages
 
-# Pages hosting is deferred: the site/ directory is published manually with
-# "Run workflow" once Pages is enabled in the repository settings
-# (Settings -> Pages -> Source: GitHub Actions). Publishing on every push
-# would fail until that setting exists.
+# Publishes site/ to https://willowvibe.github.io/pipelineprobe/ on every push
+# to main, with a manual "Run workflow" escape hatch. Pages must be enabled in
+# Settings -> Pages -> Source: GitHub Actions.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
