@@ -5,6 +5,7 @@ A read-only audit of Airflow, dbt and your warehouse that produces one prioritiz
 [![CI](https://github.com/willowvibe/pipelineprobe/actions/workflows/ci.yml/badge.svg)](https://github.com/willowvibe/pipelineprobe/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/pipelineprobe)](https://pypi.org/project/pipelineprobe/)
 [![GitHub release](https://img.shields.io/github/v/release/willowvibe/pipelineprobe)](https://github.com/willowvibe/pipelineprobe/releases)
+[![Live demo](https://img.shields.io/badge/demo-live-brightgreen)](https://willowvibe.github.io/pipelineprobe/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
 
