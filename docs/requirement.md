@@ -71,7 +71,7 @@ Existing observability tools either:
 ### 3.2 Primary User Flows
 
 **Flow A: Local Audit (Developer)**
-1. Install CLI: `pip install pipelineprobe`
+1. Install CLI: `pip install https://github.com/willowvibe/pipelineprobe/releases/download/v0.3.0/pipelineprobe-0.3.0-py3-none-any.whl`
 2. Configure via YAML or flags (Airflow URL, dbt path, warehouse DSN).
 3. Run:  
    ```bash
@@ -203,7 +203,7 @@ Warehouse +--------------+         +--------+--------+
 
 ### 6.4 Deployment
 
-- **CLI:** `pip install pipelineprobe`.
+- **CLI:** `pip install https://github.com/willowvibe/pipelineprobe/releases/download/v0.3.0/pipelineprobe-0.3.0-py3-none-any.whl`.
 - **Container:** Docker image with:
   - Python base
   - `pipelineprobe` installed
@@ -381,7 +381,7 @@ For integration into CI or other tools (including ObservaKit).
   - Postgres table stats.
 - Implement 8–10 core rules.
 - Implement HTML renderer (Jinja2 template, Tailwind or simple CSS).
-- Ship v0.1.0 to PyPI + Docker Hub.
+- Package v0.1.0 as a GitHub release (wheel + sdist) with a Dockerfile for local builds.
 
 ### Phase 2 — DX & CI Integration (2 weeks)
 

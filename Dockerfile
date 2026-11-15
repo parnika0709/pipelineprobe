@@ -2,13 +2,17 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies if any needed (e.g. for psycopg2)
-# but psycopg2-binary is used, so slim should be enough.
-
+# Install the package (the build backend needs the package sources present).
 COPY pyproject.toml README.md ./
-RUN pip install --no-cache-dir .
-
 COPY pipelineprobe/ ./pipelineprobe/
+# Opt into cloud warehouses with: --build-arg PIP_EXTRAS="[cloud]"
+ARG PIP_EXTRAS=""
+RUN pip install --no-cache-dir ".${PIP_EXTRAS}"
+
+# Run as an unprivileged user.
+RUN useradd --create-home --uid 1000 appuser \
+    && chown -R appuser:appuser /app
+USER appuser
 
 ENTRYPOINT ["pipelineprobe"]
 CMD ["--help"]

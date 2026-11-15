@@ -1,6 +1,7 @@
-from typing import List
 from datetime import datetime, timezone
-from pipelineprobe.models import Task, Issue, Dag
+from typing import List
+
+from pipelineprobe.models import Dag, Issue, Task
 
 
 def _severity(context: dict, rule_name: str, default: str) -> str:
@@ -33,6 +34,10 @@ def check_missing_slas(context: dict) -> List[Issue]:
     tasks: List[Task] = context.get("airflow_tasks", [])
     sev = _severity(context, "missing_sla", "info")
     for task in tasks:
+        # If the orchestrator API does not expose SLA configuration, we cannot
+        # tell whether an SLA is missing, so make no claim either way.
+        if not task.sla_known:
+            continue
         if not task.sla:
             issues.append(
                 Issue(

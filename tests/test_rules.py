@@ -1,16 +1,17 @@
 from datetime import datetime, timedelta
+
+from pipelineprobe.models import Dag, DagRun
 from pipelineprobe.rules.airflow_rules import (
+    check_high_failure_rate,
     check_missing_retries,
     check_missing_slas,
     check_stale_dags,
-    check_high_failure_rate,
 )
+from pipelineprobe.rules.dbt_rules import check_failing_models, check_missing_tests
 from pipelineprobe.rules.postgres_rules import (
     check_large_tables,
     check_missing_timestamps,
 )
-from pipelineprobe.rules.dbt_rules import check_failing_models, check_missing_tests
-from pipelineprobe.models import Dag, DagRun
 
 
 def test_check_missing_retries(mock_airflow_tasks):
@@ -31,6 +32,24 @@ def test_check_missing_slas(mock_airflow_tasks):
     issue = issues[0]
     assert issue.severity == "info"
     assert "task_no_retries" in issue.affected_resources
+
+
+def test_check_missing_slas_skipped_when_not_known():
+    from pipelineprobe.models import Task
+
+    tasks = [
+        Task(
+            dag_id="test_dag",
+            task_id="task_with_unknown_sla",
+            retries=1,
+            sla=None,
+            sla_known=False,
+            has_alerts=False,
+        )
+    ]
+    issues = check_missing_slas({"airflow_tasks": tasks})
+
+    assert issues == []
 
 
 def test_check_stale_dags():

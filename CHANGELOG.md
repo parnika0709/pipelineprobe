@@ -7,9 +7,22 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] — v0.3.0 Cost Insights + v0.2.0 New Connectors
+## [0.3.0] — 2026-11-15
 
 ### Added
+
+#### v0.3.0 — Quickstart, sample report, and install shape
+- **Docker quickstart** (`examples/quickstart/`) — a real Airflow 2.7.1, dbt and
+  Postgres stack with 8 seeded DAGs and deterministic failures;
+  `docker compose up --build` writes HTML and JSON reports with no cloud
+  accounts or existing pipelines required.
+- **Sample report** (`site/report/index.html`) — the quickstart audit committed
+  as one self-contained HTML file with working severity filters.
+- **Optional `cloud` extra** — `google-cloud-bigquery` and
+  `snowflake-connector-python` moved out of the default install. The base
+  package covers Airflow, dbt and Postgres; configuring a BigQuery or Snowflake
+  warehouse without the extra exits with an install hint instead of a
+  traceback.
 
 #### v0.2.0 — New Orchestrator Connectors
 - **Prefect connector** (`pipelineprobe/connectors/prefect.py`) — connects to a
@@ -47,6 +60,9 @@ Versioning follows [Semantic Versioning](https://semver.org/).
   `include_cost_section: true` is set.
 
 #### General
+- `pipelineprobe audit` now prints a one-line health summary
+  (`Health score: N/100 — X critical, Y warning, Z info`) before the
+  fail-threshold check.
 - `SUPPORTED_ORCHESTRATORS` constant exported from `pipelineprobe.config` for
   validation use in the CLI.
 - `init` command now generates a config template documenting all new fields.
@@ -61,6 +77,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 - `python-dateutil` declared as an explicit dependency in `pyproject.toml`.
 
 ### Fixed
+- `check_missing_slas` no longer reports false "no SLA configured" findings when the orchestrator API does not expose task SLA configuration (Airflow 2.7.1 never serializes `sla`).
 - `pipelineprobe audit --format` was shadowing Python's built-in `format()`. Renamed CLI parameter to `report_format` internally.
 - Added validation to `--format` — passing unsupported values (e.g. `csv`) now exits with a clear error.
 - `get_dags()` in the Airflow connector now paginates correctly. Previously, organisations with more than 100 DAGs would silently receive truncated results.
@@ -77,7 +94,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [0.1.0] — 2026-03-15
+## 0.1.0 — 2026-03-15
 
 ### Added
 - **Phase 0** — Project skeleton, `pyproject.toml`, CI workflow (ruff + pytest), CLI entry point.
@@ -109,5 +126,5 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-[Unreleased]: https://github.com/willowvibe/pipelineprobe/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/willowvibe/pipelineprobe/releases/tag/v0.1.0
+[Unreleased]: https://github.com/willowvibe/pipelineprobe/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/willowvibe/pipelineprobe/releases/tag/v0.3.0
