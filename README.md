@@ -8,11 +8,11 @@ A read-only audit of Airflow, dbt and your warehouse that produces one prioritiz
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
 
-[![PipelineProbe demo](https://raw.githubusercontent.com/willowvibe/pipelineprobe/main/docs/assets/pipelineprobe-demo.gif)](https://github.com/willowvibe/pipelineprobe/releases/download/v0.3.0/pipelineprobe-demo.mp4)
+[![PipelineProbe demo](https://raw.githubusercontent.com/willowvibe/pipelineprobe/main/docs/assets/pipelineprobe-demo.gif)](https://willowvibe.github.io/pipelineprobe/#demo)
 
 A narrated demo (the GIF above is a short preview) on synthetic sample data from the bundled quickstart stack. No client or production data.
 
-[Watch the full narrated demo →](https://github.com/willowvibe/pipelineprobe/releases/download/v0.3.0/pipelineprobe-demo.mp4)
+[Watch the full narrated demo →](https://willowvibe.github.io/pipelineprobe/#demo)
 
 ## What it does
 
@@ -64,7 +64,7 @@ The first run takes roughly 5–10 minutes (image pulls, build and Airflow start
 - Top actions are ordered by severity; each names the exact resource and the recommended fix.
 - The severity filter narrows the findings to all, critical, warning or info.
 
-The same report is committed at [site/report/index.html](https://github.com/willowvibe/pipelineprobe/blob/main/site/report/index.html) — download it and open it in a browser to click through the filters.
+The same report is live at [willowvibe.github.io/pipelineprobe/report](https://willowvibe.github.io/pipelineprobe/report/); its source is [site/report/index.html](https://github.com/willowvibe/pipelineprobe/blob/main/site/report/index.html).
 
 ## CI gate and diff
 
@@ -100,6 +100,7 @@ WillowVibe runs one-off PipelineProbe audits: point it at your Airflow, dbt and 
 
 | Document | Description |
 |---|---|
+| [Landing page](https://willowvibe.github.io/pipelineprobe/) | Narrated demo and the clickable sample report |
 | [Configuration Reference](https://github.com/willowvibe/pipelineprobe/blob/main/docs/configuration.md) | All YAML fields, environment variables, and rule-level options |
 | [CI Integration Guide](https://github.com/willowvibe/pipelineprobe/blob/main/docs/ci-integration.md) | GitHub Actions, GitLab CI, `diff` regression detection |
 | [Architecture](https://github.com/willowvibe/pipelineprobe/blob/main/docs/architecture.md) | How connectors, rules, and the renderer fit together |

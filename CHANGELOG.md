@@ -7,6 +7,21 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.3.1] — 2026-11-15
+
+### Fixed
+- README images and documentation links use absolute URLs. PyPI serves the
+  README as the project description without rewriting relative paths, so the
+  demo GIF, the report screenshot and every doc link were broken on the PyPI
+  project page.
+
+### Changed
+- The narrated demo and the sample report are published on GitHub Pages
+  (<https://willowvibe.github.io/pipelineprobe/>); the README and landing page
+  link to the live pages.
+
+---
+
 ## [0.3.0] — 2026-11-15
 
 ### Added
@@ -128,5 +143,6 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-[Unreleased]: https://github.com/willowvibe/pipelineprobe/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/willowvibe/pipelineprobe/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/willowvibe/pipelineprobe/releases/tag/v0.3.1
 [0.3.0]: https://github.com/willowvibe/pipelineprobe/releases/tag/v0.3.0

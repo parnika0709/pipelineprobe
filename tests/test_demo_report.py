@@ -5,6 +5,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from pipelineprobe import __version__
 from pipelineprobe.models import Issue
 from pipelineprobe.renderer import ReportRenderer
 
@@ -55,7 +56,7 @@ def test_fixture_renders_through_report_renderer(tmp_path):
     assert ">30<" in html
     assert "Health Score" in html
     assert "has a high failure rate" in html
-    assert "PipelineProbe v0.3.0" in html
+    assert f"PipelineProbe v{__version__}" in html
 
 
 def test_build_report_labels_the_page_as_sample_data(tmp_path):
@@ -72,5 +73,9 @@ def test_build_report_labels_the_page_as_sample_data(tmp_path):
     assert "synthetic data from the bundled quickstart stack" in html
     assert 'href="../"' in html
     assert html.index("<body>") < html.index("Sample report")
+    # The published page needs its own description and canonical URL for
+    # search engines and social cards.
+    assert '<link rel="canonical" href="https://willowvibe.github.io/pipelineprobe/report/">' in html
+    assert 'name="description"' in html
     # The renderer's own filename must not be left behind beside index.html.
     assert [p.name for p in output_path.parent.iterdir()] == ["index.html"]

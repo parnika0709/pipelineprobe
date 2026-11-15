@@ -11,7 +11,7 @@ RELEASE_VIDEO = (
     "https://github.com/willowvibe/pipelineprobe/releases/download/v0.3.0/"
     "pipelineprobe-demo.mp4"
 )
-RELEASE_TAG = "https://github.com/willowvibe/pipelineprobe/releases/tag/v0.3.0"
+RELEASE_TAG = "https://github.com/willowvibe/pipelineprobe/releases/tag/v0.3.1"
 SAMPLE_DISCLAIMER = (
     "synthetic data from the bundled quickstart stack, not client work"
 )

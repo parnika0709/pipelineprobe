@@ -99,12 +99,29 @@ def load_fixture(path: Path) -> tuple[list[Issue], dict]:
     return issues, summary
 
 
+PAGE_METADATA = (
+    '    <meta name="description" content="A PipelineProbe audit of the bundled '
+    'quickstart stack: health score 30/100, 2 critical and 5 warning findings '
+    'across 8 DAGs.">\n'
+    '    <link rel="canonical" '
+    'href="https://willowvibe.github.io/pipelineprobe/report/">'
+)
+
+
 def inject_sample_banner(html: str) -> str:
     """Insert the sample-data banner immediately after the opening body tag."""
     marker = "<body>"
     if marker not in html:
         raise SystemExit("error: rendered report has no <body> tag to attach the banner to")
     return html.replace(marker, marker + SAMPLE_BANNER, 1)
+
+
+def inject_page_metadata(html: str) -> str:
+    """Add the description and canonical URL the published page needs after ``<title>``."""
+    marker = "</title>"
+    if marker not in html:
+        raise SystemExit("error: rendered report has no </title> tag to attach metadata to")
+    return html.replace(marker, f"{marker}\n{PAGE_METADATA}", 1)
 
 
 def render_sample_report(issues: list[Issue], summary: dict, output_path: Path) -> Path:
@@ -118,7 +135,9 @@ def render_sample_report(issues: list[Issue], summary: dict, output_path: Path) 
     if rendered_path != output_path:
         rendered_path.unlink()
 
-    output_path.write_text(inject_sample_banner(html), encoding="utf-8")
+    output_path.write_text(
+        inject_page_metadata(inject_sample_banner(html)), encoding="utf-8"
+    )
     return output_path
 
 
