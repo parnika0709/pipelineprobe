@@ -8,7 +8,7 @@ INDEX_PATH = REPO_ROOT / "site" / "index.html"
 
 PAGES_VIDEO = "assets/pipelineprobe-demo.mp4"
 RELEASE_VIDEO = (
-    "https://github.com/willowvibe/pipelineprobe/releases/download/v0.3.0/"
+    "https://github.com/willowvibe/pipelineprobe/releases/download/v0.3.1/"
     "pipelineprobe-demo.mp4"
 )
 RELEASE_TAG = "https://github.com/willowvibe/pipelineprobe/releases/tag/v0.3.1"
