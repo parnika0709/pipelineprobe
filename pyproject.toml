@@ -23,6 +23,14 @@ dependencies = [
     "python-dateutil>=2.8.0",
 ]
 
+[project.urls]
+Homepage = "https://willowvibe.github.io/pipelineprobe/"
+Repository = "https://github.com/willowvibe/pipelineprobe"
+Issues = "https://github.com/willowvibe/pipelineprobe/issues"
+Changelog = "https://github.com/willowvibe/pipelineprobe/blob/main/CHANGELOG.md"
+"Pipeline health audit" = "https://www.willowvibe.com/services/data-pipelines"
+Company = "https://www.willowvibe.com"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.4",
