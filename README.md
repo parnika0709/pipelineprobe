@@ -2,6 +2,8 @@
 
 A read-only audit of Airflow, dbt and your warehouse that produces one prioritized report in one command.
 
+Built and maintained by [WillowVibe](https://www.willowvibe.com). Want an expert to run the audit and fix what it finds? See our [pipeline health audit](https://www.willowvibe.com/services/data-pipelines).
+
 [![CI](https://github.com/willowvibe/pipelineprobe/actions/workflows/ci.yml/badge.svg)](https://github.com/willowvibe/pipelineprobe/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/pipelineprobe)](https://pypi.org/project/pipelineprobe/)
 [![GitHub release](https://img.shields.io/github/v/release/willowvibe/pipelineprobe)](https://github.com/willowvibe/pipelineprobe/releases)
