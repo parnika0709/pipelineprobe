@@ -7,7 +7,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [0.3.2] — 2026-11-21
+## [0.3.2] — 2026-11-20
 
 ### Added
 - Project URLs in the package metadata (Homepage, Repository, Issues, Changelog,
